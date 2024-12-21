@@ -4,3 +4,4 @@
 - Added item shop and closet structs for now
 - Move API Response struct to util
     > Will probably move this to src/api/
+- Make the API documentation better
