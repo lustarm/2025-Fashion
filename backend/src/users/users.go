@@ -19,9 +19,12 @@ var idCounter int
 func CreateUser(w http.ResponseWriter, r *http.Request) {
 	var newUser User
 	err := json.NewDecoder(r.Body).Decode(&newUser)
+
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
-		json.NewEncoder(w).Encode(util.APIResponse{Error: true, Message: err.Error()})
+
+		// Will usually return EOF
+		json.NewEncoder(w).Encode(util.APIResponse{Error: true, Message: "Invalid request"})
 		return
 	}
 
