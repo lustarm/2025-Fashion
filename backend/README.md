@@ -51,8 +51,7 @@
       ```json
       {
         "error": false,
-        "message": "User logged in successfully",
-        "token": "<JWT>"
+        "message": "<JWT>"
       }
       ```
   - **401 Unauthorized:** Invalid username or password.
