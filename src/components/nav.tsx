@@ -2,11 +2,14 @@ import { Link } from "react-router-dom";
 
 export default function Navbar() {
     return (
-        <nav className="bg-gray-800 text-gray-300 font-sans p-4 shadow-md">
+        <nav className="bg-black text-white p-4 shadow-md font-outfit">
             <div className="container mx-auto flex justify-between items-center">
                 {/* Logo */}
-                <Link to="/" className="text-2xl font-bold text-white hover:text-sky-300 transition-colors duration-300">
-                    New Wave Fashion
+                <Link
+                    to="/"
+                    className="text-2xl font-bold text-white hover:text-shadow-lg transition-all duration-300"
+                >
+                    New Wave <span className="text-amber-100">Fashion</span>
                 </Link>
                 
                 {/* Links */}
@@ -14,7 +17,7 @@ export default function Navbar() {
                     <li>
                         <Link
                             to="/"
-                            className="hover:text-white transition-all duration-300"
+                            className="hover:text-shadow-white transition-all duration-300"
                         >
                             Home
                         </Link>
@@ -22,7 +25,7 @@ export default function Navbar() {
                     <li>
                         <Link
                             to="/trends"
-                            className="hover:text-white transition-all duration-300"
+                            className="hover:text-shadow-white transition-all duration-300"
                         >
                             Trends
                         </Link>
@@ -30,7 +33,7 @@ export default function Navbar() {
                     <li>
                         <Link
                             to="/shop"
-                            className="hover:text-white transition-all duration-300"
+                            className="hover:text-shadow-white transition-all duration-300"
                         >
                             Shop
                         </Link>
@@ -38,20 +41,12 @@ export default function Navbar() {
                     <li>
                         <Link
                             to="#"
-                            className="hover:text-white transition-all duration-300"
+                            className="hover:text-shadow-white transition-all duration-300"
                         >
                             Contact
                         </Link>
                     </li>
                 </ul>
-
-                {
-                /* 
-                <Link to="register" className="bg-blue-600 text-black px-4 py-2 rounded-lg hover:bg-blue-400 transition-all duration-300">
-                    Sign Up
-                </Link>
-                */
-                }
             </div>
         </nav>
     );
