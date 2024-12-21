@@ -2,6 +2,7 @@ package users
 
 import (
 	"backend/src/auth"
+	"backend/src/util"
 	"encoding/json"
 	"fmt"
 	"log"
@@ -14,25 +15,19 @@ import (
 var users []User
 var idCounter int
 
-// APIResponse struct to represent the response format
-type APIResponse struct {
-	Error   bool   `json:"error"`
-	Message string `json:"message"`
-}
-
 // Updated CreateUser function with detailed error response
 func CreateUser(w http.ResponseWriter, r *http.Request) {
 	var newUser User
 	err := json.NewDecoder(r.Body).Decode(&newUser)
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
-		json.NewEncoder(w).Encode(APIResponse{Error: true, Message: err.Error()})
+		json.NewEncoder(w).Encode(util.APIResponse{Error: true, Message: err.Error()})
 		return
 	}
 
 	if newUser.Username == "" || newUser.Password == "" || newUser.Email == "" {
 		w.WriteHeader(http.StatusUnauthorized)
-		json.NewEncoder(w).Encode(APIResponse{Error: true, Message: "Invalid request"})
+		json.NewEncoder(w).Encode(util.APIResponse{Error: true, Message: "Invalid request"})
 		return
 	}
 
@@ -40,7 +35,7 @@ func CreateUser(w http.ResponseWriter, r *http.Request) {
 	for _, user := range users {
 		if user.Username == newUser.Username {
 			w.WriteHeader(http.StatusUnauthorized)
-			json.NewEncoder(w).Encode(APIResponse{Error: true, Message: "User already registered"})
+			json.NewEncoder(w).Encode(util.APIResponse{Error: true, Message: "User already registered"})
 			return
 		}
 	}
@@ -53,7 +48,7 @@ func CreateUser(w http.ResponseWriter, r *http.Request) {
 	token, err := auth.CreateToken(newUser.ID, newUser.Username)
 	if err != nil {
 		w.WriteHeader(http.StatusUnauthorized)
-		json.NewEncoder(w).Encode(APIResponse{Error: true, Message: "Failed to create authorization token"})
+		json.NewEncoder(w).Encode(util.APIResponse{Error: true, Message: "Failed to create authorization token"})
 		return
 	}
 
@@ -61,7 +56,7 @@ func CreateUser(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Authorization", fmt.Sprintf("Bearer %v", token))
 
 	// Return success response
-	json.NewEncoder(w).Encode(APIResponse{Error: false, Message: token})
+	json.NewEncoder(w).Encode(util.APIResponse{Error: false, Message: token})
 }
 
 type CheckUserRequest struct {
@@ -77,7 +72,7 @@ func CheckUser(w http.ResponseWriter, r *http.Request) {
 	err := json.NewDecoder(r.Body).Decode(&credentials)
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
-		json.NewEncoder(w).Encode(APIResponse{Error: true, Message: "Invalid request payload"})
+		json.NewEncoder(w).Encode(util.APIResponse{Error: true, Message: "Invalid request payload"})
 		return
 	}
 
@@ -89,7 +84,7 @@ func CheckUser(w http.ResponseWriter, r *http.Request) {
 			token, err := auth.CreateToken(user.Username, user.ID)
 			if err != nil {
 				w.WriteHeader(http.StatusUnauthorized)
-				json.NewEncoder(w).Encode(APIResponse{Error: true, Message: "Failed to create authorization token"})
+				json.NewEncoder(w).Encode(util.APIResponse{Error: true, Message: "Failed to create authorization token"})
 				return
 			}
 
@@ -97,15 +92,15 @@ func CheckUser(w http.ResponseWriter, r *http.Request) {
 			w.Header().Set("Authorization", fmt.Sprintf("Bearer %v", token))
 
 			// Return success response
-			json.NewEncoder(w).Encode(APIResponse{Error: false, Message: token})
+			json.NewEncoder(w).Encode(util.APIResponse{Error: false, Message: token})
 			return
 		}
 	}
 
 	// No match found, return invalid response
 	w.WriteHeader(http.StatusUnauthorized)
-	json.NewEncoder(w).Encode(APIResponse{Error: true, Message: "Invalid username or password"})
-    log.Println("Created user " + credentials.Username + " ")
+	json.NewEncoder(w).Encode(util.APIResponse{Error: true, Message: "Invalid username or password"})
+	log.Println("Created user " + credentials.Username + " ")
 }
 
 // Updated VerifyToken function with detailed error response
@@ -113,7 +108,7 @@ func VerifyToken(w http.ResponseWriter, r *http.Request) {
 	authHeader := r.Header.Get("Authorization")
 	if authHeader == "" {
 		w.WriteHeader(http.StatusUnauthorized)
-		json.NewEncoder(w).Encode(APIResponse{Error: true, Message: "Authorization header missing"})
+		json.NewEncoder(w).Encode(util.APIResponse{Error: true, Message: "Authorization header missing"})
 		return
 	}
 
@@ -121,7 +116,7 @@ func VerifyToken(w http.ResponseWriter, r *http.Request) {
 	parts := strings.Split(authHeader, " ")
 	if len(parts) != 2 || strings.ToLower(parts[0]) != "bearer" {
 		w.WriteHeader(http.StatusUnauthorized)
-		json.NewEncoder(w).Encode(APIResponse{Error: true, Message: "Invalid Authorization header format"})
+		json.NewEncoder(w).Encode(util.APIResponse{Error: true, Message: "Invalid Authorization header format"})
 		return
 	}
 
@@ -131,11 +126,10 @@ func VerifyToken(w http.ResponseWriter, r *http.Request) {
 	err := auth.VerifyToken(token)
 	if err != nil {
 		w.WriteHeader(http.StatusUnauthorized)
-		json.NewEncoder(w).Encode(APIResponse{Error: true, Message: err.Error()})
+		json.NewEncoder(w).Encode(util.APIResponse{Error: true, Message: err.Error()})
 		return
 	}
 
 	// Return success response
-	json.NewEncoder(w).Encode(APIResponse{Error: false, Message: "Verified token"})
+	json.NewEncoder(w).Encode(util.APIResponse{Error: false, Message: "Verified token"})
 }
-
