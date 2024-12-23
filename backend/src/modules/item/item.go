@@ -5,10 +5,10 @@ import (
 )
 
 type Item struct {
-	OwnerHash    string // Owners UserID hashed
-	ID           uint64 // 18,446,744,073,709,551,615 if you need more then this then i dont know
-	Name         string
-	Description  string
-	CreationDate time.Time
-	Price        int
+	OwnerID      int       `json:"ownerID"` // Owners UserID
+	ID           uint64    `json:"itemID"`  // 18,446,744,073,709,551,615 if you need more then this then i dont know
+	Name         string    `json:"itemName"`
+	Description  string    `json:"itemDescription"`
+	CreationDate time.Time `json:"creationDate"`
+	Price        int       `json:"price"`
 }
