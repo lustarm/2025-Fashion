@@ -128,4 +128,3 @@
       "message": "User not found"
     }
     ```
-```
