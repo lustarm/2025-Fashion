@@ -46,4 +46,5 @@
 }
 ```
 - Just updated api docs
+- Change colors of home screen to more a gray background using tailwind zinc
 
