@@ -88,7 +88,7 @@
       "data": {
         "userItems": [
           {
-            "ownerHash": "hashed123",
+            "ownerID": 1,
             "itemID": 1,
             "itemName": "Fancy Hat",
             "itemDescription": "A fancy hat with feathers",
@@ -96,7 +96,7 @@
             "price": 100
           },
           {
-            "ownerHash": "hashed123",
+            "ownerID": 1,
             "itemID": 2,
             "itemName": "Elegant Coat",
             "itemDescription": "A stylish coat for winter",
