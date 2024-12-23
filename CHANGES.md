@@ -47,4 +47,4 @@
 ```
 - Just updated api docs
 - Change colors of home screen to more a gray background using tailwind zinc
-
+- Added login and register files, have to do UX and implament (5:21 PM)

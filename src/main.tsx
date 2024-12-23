@@ -9,6 +9,8 @@ import Home from './routes/home';
 import Trends from './routes/trends';
 import Shop from './routes/shop';
 import ErrorPage from './routes/error-page';
+import Register from './routes/user/register';
+import Login from './routes/user/login';
 
 const router = createBrowserRouter([
 	{
@@ -17,17 +19,29 @@ const router = createBrowserRouter([
 		errorElement: <ErrorPage />,
 	},
 	{
-		path: "/trends",
+		path: "/trends/",
 		element: <Trends />,
 		errorElement: <ErrorPage />,
 	},
+	/* -- USER -- */
+	{
+		path: "/login/",
+		element: <Login />,
+		errorElement: <ErrorPage />,
+	},
+	{
+		path: "/register/",
+		element: <Register />,
+		errorElement: <ErrorPage />,
+	},
+	/* -- SHOP -- */
 	{
 		path: "/shop/:name",
 		element: <Shop />,
 		errorElement: <ErrorPage />,
 	},
 	{
-		path: "/shop",
+		path: "/shop/",
 		element: <Home />,
 		errorElement: <ErrorPage />,
 	},

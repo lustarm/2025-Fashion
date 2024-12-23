@@ -46,6 +46,14 @@ export default function Navbar() {
                             Contact
                         </Link>
                     </li>
+                    <li>
+                        <Link
+                            to="/login"
+                            className="hover:text-shadow-white transition-all duration-300"
+                        >
+                            Login
+                        </Link>
+                    </li>
                 </ul>
             </div>
         </nav>
