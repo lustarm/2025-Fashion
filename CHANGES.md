@@ -19,6 +19,7 @@
 ### 12/23/24
 - Added get user closet kinda as of 12:06 AM
 - Added mock for closet working correctly
+**Reponse below**
 ```
 {
     "error": false,
