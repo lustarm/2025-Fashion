@@ -7,7 +7,7 @@ export default function Navbar() {
                 {/* Logo */}
                 <Link
                     to="/"
-                    className="text-2xl font-bold text-white hover:text-shadow-lg transition-all duration-300"
+                    className="text-2xl font-bold text-white hover:text-shadow-white transition-all duration-300"
                 >
                     New Wave <span className="text-amber-100">Fashion</span>
                 </Link>
