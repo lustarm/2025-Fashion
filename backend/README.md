@@ -68,20 +68,19 @@
       "message": "Invalid input data"
     }
     ```
-```markdown
 ### 4. Get User Closet
 - **Endpoint:** `POST /v1/closet`
-- **Description:** Retrieves the closet (list of items) for a specific user.
+- **Description:** Fetches the list of items in the user's closet.
 - **Headers:**  
   - `Content-Type: application/json`  
 - **Request Body:**
   ```json
   {
-    "username": "testuser"
+    "username": "exampleUser"
   }
   ```
 - **Response:**
-  - **200 OK:** Successfully retrieved the user's closet.
+  - **200 OK:** Successfully fetched the user's closet.
     ```json
     {
       "error": false,
@@ -108,7 +107,7 @@
       }
     }
     ```
-  - **400 Bad Request:** Invalid request payload (e.g., JSON decoding error).
+  - **400 Bad Request:** Invalid request body (e.g., malformed JSON).
     ```json
     {
       "error": true,
@@ -122,7 +121,7 @@
       "message": "Username cannot be empty"
     }
     ```
-  - **404 Not Found:** The specified user does not exist.
+  - **404 Not Found:** User does not exist.
     ```json
     {
       "error": true,
