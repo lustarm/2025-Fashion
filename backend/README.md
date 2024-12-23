@@ -68,3 +68,65 @@
       "message": "Invalid input data"
     }
     ```
+```markdown
+### 4. Get User Closet
+- **Endpoint:** `POST /v1/closet`
+- **Description:** Retrieves the closet (list of items) for a specific user.
+- **Headers:**  
+  - `Content-Type: application/json`  
+- **Request Body:**
+  ```json
+  {
+    "username": "testuser"
+  }
+  ```
+- **Response:**
+  - **200 OK:** Successfully retrieved the user's closet.
+    ```json
+    {
+      "error": false,
+      "message": "Success",
+      "data": {
+        "userItems": [
+          {
+            "ownerHash": "hashed123",
+            "itemID": 1,
+            "itemName": "Fancy Hat",
+            "itemDescription": "A fancy hat with feathers",
+            "creationDate": "2024-12-23T15:04:05Z",
+            "price": 100
+          },
+          {
+            "ownerHash": "hashed123",
+            "itemID": 2,
+            "itemName": "Elegant Coat",
+            "itemDescription": "A stylish coat for winter",
+            "creationDate": "2024-12-23T15:04:05Z",
+            "price": 250
+          }
+        ]
+      }
+    }
+    ```
+  - **400 Bad Request:** Invalid request payload (e.g., JSON decoding error).
+    ```json
+    {
+      "error": true,
+      "message": "Invalid request"
+    }
+    ```
+  - **401 Unauthorized:** Missing or empty username.
+    ```json
+    {
+      "error": true,
+      "message": "Username cannot be empty"
+    }
+    ```
+  - **404 Not Found:** The specified user does not exist.
+    ```json
+    {
+      "error": true,
+      "message": "User not found"
+    }
+    ```
+```
