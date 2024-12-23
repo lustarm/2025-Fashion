@@ -1,0 +1,20 @@
+[
+    {
+        "src": "./src/assets/SideRickOwens.jpg",
+        "alt": "Rick Owens Shoes",
+        "description": "Rick Owens Handmade Leather Resole",
+        "name": "rick-owens-handmade-leather-resole"
+    },
+    {
+        "src": "./src/assets/Hellstar-Powered-By-The-Star-L-S-Tee-Black.jpg",
+        "alt": "Hellstar Tee",
+        "description": "Powered by The Star L/S Tee",
+        "name": "hellstar-powered-by-the-star-tee"
+    },
+    {
+        "src": "./src/assets/image3.jpg",
+        "alt": "Image 3",
+        "description": "Description of Image 3",
+        "name": "image3"
+    }
+]
