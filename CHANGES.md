@@ -48,3 +48,8 @@
 - Just updated api docs
 - Change colors of home screen to more a gray background using tailwind zinc
 - Added login and register files, have to do UX and implament (5:21 PM)
+
+### 12/24/24
+- What a wonderful time. Christmas eve
+- For those who belive in it, merry christmas eve, and those who don't I hope y'all have a wonderful day!
+- Added login and register pages just need to have them actually work
