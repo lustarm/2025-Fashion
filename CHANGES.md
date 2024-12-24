@@ -55,3 +55,6 @@
 - Added login and register pages just need to have them actually work
 - Register works now
 - Navbar is responsive if your logged in it will show profile if not it will show login
+- Added mock profile page for now
+- Login works
+- Messed around with UX and UI of profile page

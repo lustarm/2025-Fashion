@@ -2,8 +2,7 @@
 - Finish user setup
     - Have login page
         > Backend done just need to implament
-    - Have sign up page
-        > Backend done just need to implament
+    ~~- Have sign up page~~
 
 - Trends
     - Start adding a lot of filler stuff for testing

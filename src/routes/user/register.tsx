@@ -1,10 +1,16 @@
 import { useState } from "react";
-import { Link, useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../../components/nav";
+import VerifyToken from "../../util/verifyToken";
 
 export default function Register() {
     // Navigate hook
     const navigate = useNavigate()
+
+    const isLoggedIn = VerifyToken()
+    if(isLoggedIn) {
+        navigate("/profile")
+    }
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -60,17 +66,18 @@ export default function Register() {
             });
 
             // Handle the response
-            if (response.ok) {
-                const data = await response.json();
-                localStorage.setItem("Authorization", data.message)
-                navigate("/shop/")
-            } else {
+            if (!response.ok) {
                 const errorData = await response.json();
                 console.error("Registration failed:", errorData);
                 // Set error
                 setIsError(true)
-                setErrorMessage(errorData.message)
+                setErrorMessage(errorData)
             }
+
+            const data = await response.json();
+            localStorage.setItem("Authorization", data.message)
+            navigate("/shop/")
+
         } catch (error) {
             console.error("An error occurred:", error);
             setIsError(true)

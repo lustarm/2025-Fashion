@@ -5,7 +5,6 @@ import (
 	"backend/src/util"
 	"encoding/json"
 	"fmt"
-	"log"
 	"net/http"
 )
 
@@ -45,5 +44,4 @@ func CheckUser(w http.ResponseWriter, r *http.Request) {
 	// No match found, return invalid response
 	w.WriteHeader(http.StatusUnauthorized)
 	json.NewEncoder(w).Encode(util.APIResponse{Error: true, Message: "Invalid username or password"})
-	log.Println("Created user " + credentials.Username + " ")
 }
