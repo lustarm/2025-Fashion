@@ -4,10 +4,9 @@ import { Link } from "react-router-dom";
 export default function Home() {
     // Grab these from backend etc
     const images = [
-        { src: "assets/SideRickOwens.jpg", alt: "Rick Owens Shoes", description: "Rick Owens Handmade Leather Resole", name: "rick-owens-handmade-leather-resole" },
-        { src: "assets/Hellstar-Powered-By-The-Star-L-S-Tee-Black.jpg", alt: "Hellstar Tee", description: "Powered by The Star L/S Tee", name: "hellstar-powered-by-the-star-tee" },
-        { src: "assets/Pink-Hoodie.jpg", alt: "Sp5der Apparel", description: "Young Thugs Clothing Line Sp5der Apparel", name: "Pink-Sp5der-Apparel-Hoodie" },
-        // Add more images as needed
+        { src: "/src/assets/SideRickOwens.jpg", alt: "Rick Owens Shoes", description: "Rick Owens Handmade Leather Resole", name: "rick-owens-handmade-leather-resole" },
+        { src: "/src/assets/Hellstar-Powered-By-The-Star-L-S-Tee-Black.jpg", alt: "Hellstar Tee", description: "Powered by The Star L/S Tee", name: "hellstar-powered-by-the-star-tee" },
+        { src: "/src/assets/Pink-Hoodie.jpg", alt: "Sp5der Apparel", description: "Young Thugs Clothing Line Sp5der Apparel", name: "Pink-Sp5der-Apparel-Hoodie" },
     ];
 
     return (

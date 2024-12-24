@@ -53,3 +53,5 @@
 - What a wonderful time. Christmas eve
 - For those who belive in it, merry christmas eve, and those who don't I hope y'all have a wonderful day!
 - Added login and register pages just need to have them actually work
+- Register works now
+- Navbar is responsive if your logged in it will show profile if not it will show login
