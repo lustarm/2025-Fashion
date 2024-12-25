@@ -35,6 +35,20 @@ func VerifyToken(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Return success response
-	json.NewEncoder(w).Encode(util.APIResponse{Error: false, Message: "Verified token"})
+	// If token is valid check if it belongs to a user
+	// O(2n) **CHANGE THIS** IMPORTANT
+	for _, user := range users {
+		for _, userSessionID := range user.SessionIDs {
+			if token == userSessionID {
+				// Return success response
+				w.WriteHeader(http.StatusOK)
+				json.NewEncoder(w).Encode(util.APIResponse{Error: false, Message: "Verified token"})
+				return
+			}
+		}
+	}
+
+	// Return error response
+	w.WriteHeader(http.StatusNotFound)
+	json.NewEncoder(w).Encode(util.APIResponse{Error: true, Message: "Invalid token"})
 }

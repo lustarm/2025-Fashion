@@ -38,20 +38,23 @@ func CreateUser(w http.ResponseWriter, r *http.Request) {
 	}
 
 	idCounter++
-	newUser.ID = strconv.Itoa(idCounter)
-	users = append(users, newUser)
+	newUser.ID = idCounter
 
-	// Generate auth token
-	token, err := jwt.CreateToken(newUser.ID, newUser.Username)
+	// Create token and add it to user sesions
+	token, err := jwt.CreateToken(strconv.Itoa(newUser.ID), newUser.Username)
 	if err != nil {
 		w.WriteHeader(http.StatusUnauthorized)
 		json.NewEncoder(w).Encode(util.APIResponse{Error: true, Message: "Failed to create authorization token"})
 		return
 	}
 
+	newUser.SessionIDs = append(newUser.SessionIDs, token)
+	users = append(users, newUser)
+
 	// Set auth token header
 	w.Header().Set("Authorization", fmt.Sprintf("Bearer %v", token))
 
 	// Return success response
 	json.NewEncoder(w).Encode(util.APIResponse{Error: false, Message: token})
+	fmt.Println("Created user " + newUser.Username)
 }

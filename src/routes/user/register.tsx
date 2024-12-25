@@ -103,7 +103,7 @@ export default function Register() {
                             placeholder="Email"
                             value={email}
                             onChange={handleEmailChange}
-                            className={`mb-5 w-full px-4 py-2 border ${emailError ? "mb-0 border-red-500" : "border-zinc-300"
+                            className={`w-full px-4 py-2 border ${emailError ? "mb-0 border-red-500" : "mb-5 border-zinc-300"
                                 } rounded-lg focus:outline-none`}
                         />
                         {emailError && <p className="text-red-500 text-xs mb-1">Invalid email address.</p>}

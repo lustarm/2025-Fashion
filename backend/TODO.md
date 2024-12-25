@@ -1,13 +1,15 @@
 # TODO.md
-### This is a small list because I am only one person.
 - Get DB Info
     - Create DB
         > Maybe with postgresql?
     - Grab info from DB when requested
 
 - Create product
-    - Create product struct.
-    - Give json info for the product.
+    ~~- Create product struct.~~
+    ~~- Give json info for the product.~~
+    - Put mock into JSON file and parse it as a pretend backend
 
 - Closet
     - Have the user have each closet linked to them
+
+~~- Fix thing where even if no users the JWT is still able to verify~~

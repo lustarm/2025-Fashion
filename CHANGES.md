@@ -58,3 +58,4 @@
 - Added mock profile page for now
 - Login works
 - Messed around with UX and UI of profile page
+- Fixed verify in backend even if no user it would verify

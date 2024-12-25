@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"strconv"
 )
 
 // Updated CheckUser function with detailed error response
@@ -25,7 +26,7 @@ func CheckUser(w http.ResponseWriter, r *http.Request) {
 		if user.Username == credentials.Username && user.Password == credentials.Password {
 
 			// Generate auth token
-			token, err := jwt.CreateToken(user.Username, user.ID)
+			token, err := jwt.CreateToken(user.Username, strconv.Itoa(user.ID))
 			if err != nil {
 				w.WriteHeader(http.StatusUnauthorized)
 				json.NewEncoder(w).Encode(util.APIResponse{Error: true, Message: "Failed to create authorization token"})

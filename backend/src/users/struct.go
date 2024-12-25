@@ -10,11 +10,12 @@ var users []User
 var idCounter int
 
 type User struct {
-	ID       string `json:"id"`
-	Email    string `json:"email"`
-	Username string `json:"username"`
-	Password string `json:"password"`
-	Closet   UserCloset
+	ID         int        `json:"id"`
+	Email      string     `json:"email"`
+	Username   string     `json:"username"`
+	Password   string     `json:"password"`
+	Closet     UserCloset `json:"closet"`
+	SessionIDs []string   `json:"sessionIDS"`
 }
 
 // check.go
