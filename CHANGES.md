@@ -59,3 +59,6 @@
 - Login works
 - Messed around with UX and UI of profile page
 - Fixed verify in backend even if no user it would verify
+
+## 12/25/24
+- Nothing done today, I just got home (11:40 PM) Merry Christmas!
