@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 import Navbar from "../../../components/nav";
 
 export default function Profile() {
-    // Simulated data for the profile page (this would come from the backend in a real app)
+    // Simulated data for the profile page
     const [user, setUser] = useState({
         username: "John Doe",
         email: "john@example.com",
@@ -13,7 +13,6 @@ export default function Profile() {
 
     useEffect(() => {
         // Simulate fetching user data from an API
-        // Replace this with actual API call logic to get user data
         setUser({
             username: "John Doe",
             email: "john@example.com",
@@ -22,8 +21,8 @@ export default function Profile() {
     }, []);
 
     const handleLogout = () => {
-        localStorage.removeItem("Authorization")
-    }
+        localStorage.removeItem("Authorization");
+    };
 
     return (
         <div className="min-h-screen bg-zinc-900 text-white font-outfit">
@@ -32,13 +31,15 @@ export default function Profile() {
                 {/* Sidebar */}
                 <div className="px-6 flex flex-col space-y-2">
                     <h2 className="text-2xl font-bold mt-6 mb-6">Profile Menu</h2>
-                    <Link to="/profile/edit"
+                    <Link
+                        to="/profile/edit"
                         className="px-10 py-2 text-lg text-black bg-white rounded-sm hover:bg-amber-100 transition-all duration-300"
                     >
-                        Overview
+                        Edit Profile
                     </Link>
 
-                    <Link to="/profile/settings"
+                    <Link
+                        to="/profile/settings"
                         className="px-10 py-2 text-lg text-black bg-white rounded-sm hover:bg-amber-100 transition-all duration-300"
                     >
                         Settings
@@ -82,8 +83,10 @@ export default function Profile() {
                             </Link>
                         </div>
                     </div>
+                    <Outlet /> {/* Child routes will render here */}
                 </div>
             </div>
         </div>
     );
 }
+

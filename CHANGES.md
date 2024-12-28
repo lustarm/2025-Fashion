@@ -62,3 +62,6 @@
 
 ## 12/25/24
 - Nothing done today, I just got home (11:40 PM) Merry Christmas!
+
+### 12/27/24
+- Created get user data which uses a users sessions ID as a token to get user data

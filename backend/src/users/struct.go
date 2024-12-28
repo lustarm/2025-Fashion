@@ -32,3 +32,8 @@ type UserCloset struct {
 type GetUserClosetRequest struct {
 	Username string `json:"username"`
 }
+
+// data.go
+type GetUserDataRequest struct {
+	SessionID string `json:"sessionID"`
+}

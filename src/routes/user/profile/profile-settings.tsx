@@ -1,14 +1,17 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function ProfileSettings() {
     const [notificationsEnabled, setNotificationsEnabled] = useState(true);
     const [privacySetting, setPrivacySetting] = useState("Public");
 
+    const navigate = useNavigate()
+
     const handleSaveSettings = (e: React.FormEvent) => {
         e.preventDefault();
         // Handle saving settings here (e.g., API call to save the settings)
         alert("Settings saved!");
+        navigate("/profile/")
     };
 
     return (
