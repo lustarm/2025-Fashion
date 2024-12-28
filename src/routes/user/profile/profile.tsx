@@ -4,20 +4,38 @@ import { Link, Outlet } from "react-router-dom";
 import Navbar from "../../../components/nav";
 
 export default function Profile() {
-    // Simulated data for the profile page
+
     const [user, setUser] = useState({
-        username: "John Doe",
-        email: "john@example.com",
+        username: "...",
+        email: "...",
         profilePic: "/src/assets/profilepic.jpg", // Default profile picture
     });
 
+    const payload = {
+        sessionID: localStorage.getItem("Authorization")
+    }
+
     useEffect(() => {
-        // Simulate fetching user data from an API
-        setUser({
-            username: "John Doe",
-            email: "john@example.com",
-            profilePic: "/src/assets/profilepic.jpg",
-        });
+        fetch("http://localhost:8000/v1/getUserData", {
+            method: "POST",
+            body: JSON.stringify(payload)
+        })
+            .then((response) => {
+                if (!response.ok) {
+                    alert("Failed to fetch User Data")
+                    return
+                }
+
+                return response.json()
+            })
+            .then((data) => {
+                console.log(data)
+                setUser({
+                    username: data.data.username,
+                    email: data.data.email,
+                    profilePic: "/src/assets/profilepic.jpg",
+                });
+            })
     }, []);
 
     const handleLogout = () => {

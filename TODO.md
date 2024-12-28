@@ -1,8 +1,8 @@
 # TODO.md
 - Finish user setup
-    - Have login page
-        > Backend done just need to implament
+    ~~- Have login page~~
     ~~- Have sign up page~~
+    - Have user be able to change username
 
 - Trends
     - Start adding a lot of filler stuff for testing

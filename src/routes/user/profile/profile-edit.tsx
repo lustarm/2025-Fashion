@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function ProfileEdit() {
-    const [username, setUsername] = useState("John Doe");
-    const [email, setEmail] = useState("john@example.com");
+    const [username, setUsername] = useState("...");
+    const [email, setEmail] = useState("...");
 
     const navigate = useNavigate()
 
@@ -12,6 +12,30 @@ export default function ProfileEdit() {
         // Handle form submission here (e.g., call API to save the data)
         navigate("/profile/")
     };
+
+    const payload = {
+        sessionID: localStorage.getItem("Authorization")
+    }
+
+    useEffect(() => {
+        fetch("http://localhost:8000/v1/getUserData", {
+            method: "POST",
+            body: JSON.stringify(payload)
+        })
+            .then((response) => {
+                if (!response.ok) {
+                    alert("Failed to fetch User Data")
+                    return
+                }
+
+                return response.json()
+            })
+            .then((data) => {
+                console.log(data)
+                setUsername(data.data.username)
+                setEmail(data.data.email)
+            })
+    }, []);
 
     return (
         <div className="min-h-screen bg-zinc-900 text-white font-outfit p-6">
