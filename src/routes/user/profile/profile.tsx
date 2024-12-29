@@ -1,9 +1,16 @@
 import { useState, useEffect } from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 
 import Navbar from "../../../components/nav";
+import VerifyToken from "../../../util/verifyToken";
 
 export default function Profile() {
+    const navigate = useNavigate()
+    const isLoggedIn = VerifyToken()
+
+    if(!isLoggedIn) {
+        navigate("/login")
+    }
 
     const [user, setUser] = useState({
         username: "...",
@@ -23,6 +30,7 @@ export default function Profile() {
             .then((response) => {
                 if (!response.ok) {
                     alert("Failed to fetch User Data")
+                    navigate("/login")
                     return
                 }
 

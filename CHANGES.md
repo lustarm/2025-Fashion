@@ -67,3 +67,5 @@
 - Created get user data which uses a users sessions ID as a token to get user data
 - Fix profile where it shows your actual username
 
+### 12/29/24
+- Made more verbose response for GetUserData

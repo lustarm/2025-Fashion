@@ -17,7 +17,7 @@ func CheckUser(w http.ResponseWriter, r *http.Request) {
 	err := json.NewDecoder(r.Body).Decode(&credentials)
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
-		json.NewEncoder(w).Encode(util.APIResponse{Error: true, Message: "Invalid request payload"})
+		json.NewEncoder(w).Encode(util.APIResponse{Error: true, Message: "Invalid request"})
 		return
 	}
 
