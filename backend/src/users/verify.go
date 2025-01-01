@@ -49,6 +49,6 @@ func VerifyToken(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Return error response
-	w.WriteHeader(http.StatusNotFound)
+	w.WriteHeader(http.StatusUnauthorized)
 	json.NewEncoder(w).Encode(util.APIResponse{Error: true, Message: "Invalid token"})
 }

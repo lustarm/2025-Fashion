@@ -8,10 +8,6 @@ export default function Profile() {
     const navigate = useNavigate()
     const isLoggedIn = VerifyToken()
 
-    if(!isLoggedIn) {
-        navigate("/login")
-    }
-
     const [user, setUser] = useState({
         username: "...",
         email: "...",
@@ -23,6 +19,10 @@ export default function Profile() {
     }
 
     useEffect(() => {
+        if(!isLoggedIn) {
+            navigate("/login")
+        }
+
         fetch("http://localhost:8000/v1/getUserData", {
             method: "POST",
             body: JSON.stringify(payload)

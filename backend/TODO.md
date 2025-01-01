@@ -14,4 +14,4 @@
 
 - Users
     ~~- Fix thing where even if no users the JWT is still able to verify~~
-    - Fix multiple sessions bug where you cant access profile
+    ~~- Fix multiple sessions bug where you cant access profile~~

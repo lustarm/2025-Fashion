@@ -69,3 +69,7 @@
 
 ### 12/29/24
 - Made more verbose response for GetUserData
+
+## 1/1/25
+- Happy new years
+- Fixed login issue where it wouldn't allow multiple logins

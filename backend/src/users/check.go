@@ -13,7 +13,6 @@ import (
 func CheckUser(w http.ResponseWriter, r *http.Request) {
 	var credentials CheckUserRequest
 
-	// Decode the incoming request body into credentials
 	err := json.NewDecoder(r.Body).Decode(&credentials)
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
@@ -21,11 +20,9 @@ func CheckUser(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Iterate over the list of users to find a match
-	for _, user := range users {
+	for i, user := range users {
 		if user.Username == credentials.Username && user.Password == credentials.Password {
 
-			// Generate auth token
 			token, err := jwt.CreateToken(user.Username, strconv.Itoa(user.ID))
 			if err != nil {
 				w.WriteHeader(http.StatusUnauthorized)
@@ -33,10 +30,10 @@ func CheckUser(w http.ResponseWriter, r *http.Request) {
 				return
 			}
 
-			// Set auth token header
+			users[i].SessionIDs = append(users[i].SessionIDs, token)
+
 			w.Header().Set("Authorization", fmt.Sprintf("Bearer %v", token))
 
-			// Return success response
 			json.NewEncoder(w).Encode(util.APIResponse{Error: false, Message: token})
 			return
 		}
