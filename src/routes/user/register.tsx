@@ -142,7 +142,7 @@ export default function Register() {
 
                     {/* Login Link */}
                     <Link
-                        to="/Login"
+                        to="/login"
                         className="text-zinc-500 text-xs pt-3 hover:text-amber-400 transition-colors duration-300"
                     >
                         Already a member? Login here.
